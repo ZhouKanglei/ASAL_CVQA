@@ -1,0 +1,42 @@
+# cl model
+model: adam
+
+# experimental args
+lr: 0.0001
+weight_decay: 0.0000001
+decay_interval: 2
+decay_ratio: 0.75
+n_epochs: 150
+batch_size: 10
+gpus: [0]
+num_workers: 4
+
+loss_type: mix 
+mse_loss_weight: 0.01 
+plcc_loss_weight: 1
+
+# backbone args
+feature_extractor: backbone.ResNet_backbone.ResNet18
+feature_extractor_args:
+  pretrained_path: /{root}/Data/VRVideo_Dataset/weights/resnet18-f37072fd.pth
+
+adapter: backbone.Adapter.AdapterT
+adapter_args:
+  in_channels: 512
+  out_channels: 512
+  in_frames: 3
+  out_frames: 7
+
+regressor: backbone.DAE.DAE
+regressor_args:
+  in_channels: 512
+  out_channels: 1
+
+# dataset setting
+train_ratio: 0.8
+dataset: domain-mtl
+dataset_args:
+  video_dir: /{root}/Data/VRVideo_Dataset/ERP_frame/erp_fp1_512_spAB
+  category_file_path: /{root}/Data/VRVideo_Dataset/info/categorized_videos.csv
+  video_info_file_path: /{root}/Data/VRVideo_Dataset/info/infoAB_all.csv
+  
