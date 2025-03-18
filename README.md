@@ -5,12 +5,13 @@
     </h1>
   </div>
   <div>
-      VR 2024 Submission &emsp; Online Submission ID: 1228
+      TVCG - VR 2025 > 
+      <a href="https://arxiv.org/abs/2502.19644">arXiv</a>  
   </div>
   <br/>
 </div>
 
-This repository contains the implementation of Adaptive Score Alignment Learning (ASAL), a novel approach designed for Continual Virtual Reality Video Quality Assessment (VR-VQA). 
+This repository contains the implementation of Adaptive Score Alignment Learning (ASAL), a novel approach designed for Continual Virtual Reality Video Quality Assessment (VR-VQA).
 
 ![](teaser.png)
 
@@ -18,15 +19,14 @@ ASAL leverages feature space smoothing techniques to address the correlation-pre
 
 ![](framework.png)
 
-
 ## Requirement
 
 - torch==2.0.1
 - torchvision==0.15.2
-- torchvideotransforms 
-- tqdm  
-- numpy  
-- scipy  
+- torchvideotransforms
+- tqdm
+- numpy
+- scipy
 - quadprog
 
 ## Usage
@@ -40,7 +40,6 @@ pip install -r requirements.txt
 ### Preparing datasets:
 
 To get started with the experiments, download the MTL-AQA dataset from the [VRVQA](https://github.com/limuhit/VR-Video-Quality-in-the-Wild).
-
 
 ### Pre-trained model:
 
@@ -59,7 +58,7 @@ CUDA_VISIBLE_DEVICES=0 python -u main.py \
     --n_epochs 30 --batch_size 4 \
     --loss_type mix \
     --mse_loss_weight 0.01 \
-    --plcc_loss_weight 1 
+    --plcc_loss_weight 1
 ```
 
 2. Train the joint training model:
@@ -71,7 +70,7 @@ CUDA_VISIBLE_DEVICES=0 python -u main.py \
     --n_epochs 30 --batch_size 4 \
     --loss_type mix \
     --mse_loss_weight 0.01 \
-    --plcc_loss_weight 1 
+    --plcc_loss_weight 1
 ```
 
 3. Train the continual training model:
